@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>F2 EOD Review</title>
+</head>
+<body>
+    <h1>Register</h1>
+    <h2>Username: <input id='username-input' placeholder="enter username"/></h2>
+    <h2>Password: <input id='password-input' placeholder="enter password"/></h2>
+    <button id='register-btn'>register</button>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        // get references to HTML elements
+        const usernameInput = document.querySelector('#username-input')
+        const passwordInput = document.querySelector('#password-input')
+        const registerBtn = document.querySelector('#register-btn')
+
+        registerBtn.addEventListener('click', function() {
+            const usernameVal = usernameInput.value;
+            const passwordVal = passwordInput.value;
+
+            axios
+                .post('http://localhost:5050/auth/users', { username: usernameVal, password: passwordVal })
+                .then(function(res) {
+                    console.log(res.data)
+                })
+        })
+    </script>
+</body>
+</html>
